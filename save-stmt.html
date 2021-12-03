@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+<title>SAVE Statement - SQL Notebook</title>
+<link rel="stylesheet" href="sqlnotebook.css">
+</head>
+<body>
+<header>
+<table class="nav">
+<tr>
+<td>
+<a href="index.html"><img src="art/SqlNotebookIcon.png" alt="SQL Notebook (logo)" style="width: 58px; height: 58px; float: left; margin-right: 20px;"></a>
+</td>
+<td>
+<a href="index.html" id="title">SQL Notebook</a><br>
+<nav>
+<ul class="nav">
+<li><a href="https://github.com/brianluft/sqlnotebook/releases">Download</a></li>
+<li><a href="doc.html"><span id="header-doc-long">Documentation</span><span id="header-doc-short">Docs</span></a></li>
+<li><a href="https://github.com/brianluft/sqlnotebook">GitHub</a></li>
+</ul>
+</nav>
+</td>
+</tr>
+</table>
+<hr style="margin-top: 15px; margin-bottom: 15px;">
+</header>
+<article><div id="article">
+<h1><code>SAVE</code> Statement</h1>Saves the notebook to disk.
+  <h2>Syntax</h2>
+  <p><tt>SAVE;</tt><tt><br></tt> <tt>SAVE <i>filename</i>;</tt><br></p>
+  <h2>Parameters</h2>
+  <ul class="args">
+    <li><i>filename</i>: text (optional)<br>
+    The path where the notebook should be saved. If not provided, the notebook is saved to its existing filename. If
+    the notebook is untitled and no filename is provided, an error is thrown.</li>
+  </ul>
+  <h2>Examples</h2>
+  <ul class="examples">
+    <li><code>SAVE 'C:\Data\my-notebook.sqlnb';</code><br>
+    Saves the notebook to the specified path.</li>
+    <li><code>SAVE;</code><br>
+    Saves the notebook to its existing filename. If the notebook is untitled, this will throw an error.</li>
+  </ul>
+  <h2>Remarks</h2>
+  <p>The <code>SAVE</code> statement is particularly useful in scripts to ensure changes are persisted to disk.</p>
+  <p><strong>Important:</strong> The <code>SAVE</code> statement only works outside of a transaction. If you have an
+  active transaction, <code>SAVE</code> will fail with an error. Because the SQL Notebook UI defaults script execution
+  to "Implicit BEGIN ... COMMIT" transaction mode, the <code>SAVE</code> command will produce an error when first
+  attempted in the UI. To use <code>SAVE</code> in the UI, you must change the transaction mode to "None (auto-commit)"
+  before executing your script.</p>
+  <p>This transaction limitation does not affect the <code>SqlNotebookCmd</code> command line tool, which does not use
+  implicit transactions.</p>
+</div></article>
+<footer><div id="footer">
+<hr>
+© 2016-2025 <a href="https://github.com/electroly">Brian Luft</a>
+</div></footer>
+</body>
+</html>
